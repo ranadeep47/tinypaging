@@ -1,0 +1,46 @@
+header {
+	padding: 20px;
+	border : 1px solid #ccc;
+}
+
+.disabled{
+	pointer-events : none;
+	background-color : #ccc;
+	color : #bbb;
+}
+
+.page-no.active{
+	background-color: #ddd;
+}
+
+.paging-container ul{
+	margin: 0;
+	padding: 0;
+}
+
+.paging-container li{
+	margin: 0;
+	list-style: none;
+	display: inline-block;
+}
+
+.paging-list {
+	padding : 20px;
+}
+
+.paging-list > li {
+	float:  left;
+	padding: 10px;
+}
+
+li > a {
+	padding: 20px;
+	text-align: center;
+}
+
+.clearfix {
+	overflow: hidden;
+}
+
+
+

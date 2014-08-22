@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tinyowl-Paging</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+	</head>
+	<body>
+		<header>
+			<h2>TinyOwl</h2>
+		</header>
+		<div class="container"></div>
+		<!-- Scripts -->
+		<!--libs -->
+		<script type="text/javascript" src="js/app/libs/jquery-min.js"></script>
+		<script type="text/javascript" src="js/app/libs/underscore-min.js"></script>
+		<script type="text/javascript" src="js/app/libs/backbone-min.js"></script>
+
+		<!-- Models-->
+		<script type="text/javascript" src="js/app/models/FoodItem.js"></script>
+		<!-- Collections -->
+		<script type="text/javascript" src="js/app/collections/PagingCollection.js"></script>
+		<script type="text/javascript" src="js/app/collections/FoodItems.js"></script>
+		<!-- Views -->
+		<script type="text/javascript" src="js/app/views/FoodItemView.js"></script>
+		<script type="text/javascript" src="js/app/views/FoodItemsCollectionView.js"></script>
+		<script type="text/javascript" src="js/app/views/PagenationView.js"></script>
+		<!--Router-->
+		<script type="text/javascript" src="js/app/router/router.js"></script>
+		<!--App -->
+		<script type="text/javascript" src="js/app/app.js"></script>
+		<!-- Templates -->
+		<script type="text/template" class="tmp_init" >
+			<a href="#foods" class="browse">Browser Food items</button>
+		</script>
+		<script type="text/template" class="tpl_foodItemView">
+			<p class="item"><%= title%></p>
+		</script>		
+		<script type="text/template" class="tpl_foodItemsCollectionView">
+			<div class="items-container">
+				<h3>Food items</h3>
+				<div class="items"></div>
+			</div>
+		</script>
+		<script type="text/template" class="tpl_pagenationView">
+			<ul class="paging-list clearfix">
+				<% if(current_page < 5) { %>
+					<li><a href="#" class="more-left disabled"> << </a></li>
+				<% } else { %>
+					<li><a href="#" class="more-left"> << </a></li>
+				<% } %>
+				<% if(current_page == 1) { %>
+					<li><a href="#foods/<%= current_page-1%>" class="page-button prev-page disabled"> < </a></li>
+				<% } else { %>
+					<li><a href="#foods/<%= current_page-1%>" class="page-button prev-page"> < </a></li>
+				<% } %>
+				<li>
+					<ul class="page-button-list">
+						<% for(var i=lower_page; i <= higher_page; ++i){%>
+							<% if(i==current_page){ %>
+								<li><a href="#foods/<%= i%>" class="page-button page-no active"><%= i%></a></li>
+							<%}  else { %> 
+								<li><a href="#foods/<%= i%>" class="page-button page-no"><%= i%></a></li>
+							<% } %> 
+						<% } %>
+					</ul>
+				</li>
+				<% if(current_page == total_pages) { %>
+					<li><a href="#foods/<%= current_page+1%>" class="page-button prev-page disabled"> > </a></li>
+				<% } else {%>
+					<li><a href="#foods/<%= current_page+1%>" class="page-button prev-page"> > </a></li>
+				<% } %>
+				<% if(total_pages - current_page < 4) { %>
+					<li><a href="#" class="more-right disabled"> >> </a></li>
+				<% } else { %>
+					<li><a href="#" class="more-right"> >> </a></li>
+				<% } %>	
+			</ul>
+		</script>
+	</body>
+</html>
